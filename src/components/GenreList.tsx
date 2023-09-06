@@ -1,7 +1,16 @@
 import React from "react";
-import { SimpleGrid, Text } from "@chakra-ui/react";
+import {
+  HStack,
+  Icon,
+  Image,
+  List,
+  ListItem,
+  SimpleGrid,
+  Text,
+} from "@chakra-ui/react";
 import useGenres, { Genre } from "../hooks/useGenres";
 import useData from "../hooks/useData";
+import getCroppedImageUrl from "../services/image-url";
 
 const GenreList = () => {
   const { data, error, isLoading } = useGenres();
@@ -9,11 +18,20 @@ const GenreList = () => {
   return (
     <>
       {error && <Text>{error}</Text>}
-      <ul>
+      <List>
         {data.map((gen) => (
-          <li key={gen.id}>{gen.name}</li>
+          <ListItem key={gen.id} paddingY="5px">
+            <HStack>
+              <Image
+                boxSize="32px"
+                borderRadius={8}
+                src={getCroppedImageUrl(gen.image_background)}
+              />
+              <Text fontSize="lg">{gen.name}</Text>
+            </HStack>
+          </ListItem>
         ))}
-      </ul>
+      </List>
     </>
   );
 };
