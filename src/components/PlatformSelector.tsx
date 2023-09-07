@@ -1,15 +1,4 @@
-import {
-  Button,
-  Menu,
-  MenuButton,
-  MenuIcon,
-  MenuItem,
-  MenuList,
-  Select,
-  Switch,
-  Text,
-} from "@chakra-ui/react";
-import React from "react";
+import { Button, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
 import usePlatforms, { Platform } from "../hooks/usePlatforms";
 import { BsChevronDown } from "react-icons/bs";
 
@@ -38,20 +27,6 @@ const PlatformSelector = ({ onSelectPlatform, selectedPlatform }: Props) => {
         ))}
       </MenuList>
     </Menu>
-
-    // <Select
-    //   className="form-select form-select-sm mb-3"
-    //   width="250px"
-    //   size="sm"
-    //   variant="filled"
-    //   padding="10px"
-    //   placeholder="Filtrer par platforme ..."
-    //   onChange={(event) => onSelectPlatform(event.target.value)}
-    // >
-    //   {data.map((p) => (
-    //     <option value={p.id}>{p.name}</option>
-    //   ))}
-    // </Select>
   );
 };
 
