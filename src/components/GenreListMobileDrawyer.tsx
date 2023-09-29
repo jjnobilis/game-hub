@@ -21,7 +21,7 @@ const GenreListMobileDrawer = () => {
       />
       <Drawer placement="left" isOpen={isOpen} onClose={onClose}>
         <DrawerContent>
-          <DrawerBody mt={5} p="4" width="80%">
+          <DrawerBody mt={5} p="4" width="70%">
             <Stack spacing="1">
               <GenreList></GenreList>
             </Stack>
