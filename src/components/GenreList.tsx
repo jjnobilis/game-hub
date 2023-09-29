@@ -7,18 +7,24 @@ import {
   ListItem,
   Text,
 } from "@chakra-ui/react";
-import useGenres, { Genre } from "../hooks/useGenres";
+import useGenres from "../hooks/useGenres";
 import getCroppedImageUrl from "../services/image-url";
+import usGameQueryStore from "../store";
 import GenreSkeleton from "./GenreSkeleton";
 
-interface Props {
-  onSelectGenre: (genre: Genre) => void;
-  selectedGenre: Genre | null;
-}
+// interface Props {
+//   onSelectGenre: (genre: Genre) => void;
+//   selectedGenreId?: number; // | null;
+// }
 
-const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
-  const { data, error, isLoading } = useGenres();
+// const GenreList = ({ onSelectGenre, selectedGenreId }: Props) => {
+const GenreList = () => {
+  const { data: genres, error, isLoading } = useGenres();
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+  //Utilisation du store
+  const genreIdParam = usGameQueryStore((s) => s.gameQuery.genreId);
+  const onGenreParamSet = usGameQueryStore((s) => s.onGenreParamSet);
 
   //if (isLoading) return <GenreSkeleton />;
 
@@ -29,11 +35,11 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
           Genres
         </Heading>
       )}
-      {error && <Text>{error}</Text>}
+      {error && <Text>{error.message}</Text>}
       {isLoading &&
         skeletons.map((sk) => <GenreSkeleton key={sk}></GenreSkeleton>)}
       <List>
-        {data.map((gen) => (
+        {genres?.results.map((gen) => (
           <ListItem key={gen.id} paddingY="5px">
             <HStack>
               <Image
@@ -43,8 +49,9 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
                 src={getCroppedImageUrl(gen.image_background)}
               />
               <Button
-                fontWeight={selectedGenre?.id === gen.id ? "bold" : "normal"}
-                onClick={() => onSelectGenre(gen)}
+                fontWeight={genreIdParam === gen.id ? "bold" : "normal"}
+                // onClick={() => onSelectGenre(gen)}
+                onClick={() => onGenreParamSet(gen.id)}
                 fontSize="lg"
                 variant="link"
                 textAlign="left"
