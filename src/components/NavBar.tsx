@@ -1,4 +1,4 @@
-import { Box, HStack, Icon, Image } from "@chakra-ui/react";
+import { Box, HStack, Image } from "@chakra-ui/react";
 import logo from "../assets/midid.webp";
 import ColorModeSwitch from "./ColorModeSwitch";
 import SearchInput from "./SearchInput";
