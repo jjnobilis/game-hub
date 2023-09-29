@@ -11,12 +11,12 @@ const GameAttributesBox = ({ game }: Props) => {
   return (
     <div>
       <SimpleGrid columns={2} as="dl" marginTop={10}>
-        <GameAttributes name="Platforms">
+        <GameAttributes name="Plate-formes">
           {game.parent_platforms?.map(({ platform }) => (
             <Text key={platform.id}>{platform.name}</Text>
           ))}
         </GameAttributes>
-        <GameAttributes name="Metascore">
+        <GameAttributes name="Score Meta">
           <CriticScore score={game.metacritic}></CriticScore>
         </GameAttributes>
         <GameAttributes name="Genres">
@@ -24,7 +24,7 @@ const GameAttributesBox = ({ game }: Props) => {
             <Text key={g.id}>{g.name}</Text>
           ))}
         </GameAttributes>
-        <GameAttributes name="Publishers">
+        <GameAttributes name="Editeurs">
           {game.publishers?.map((g) => (
             <Text key={g.id}>{g.name}</Text>
           ))}
