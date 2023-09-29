@@ -27,9 +27,9 @@ const GameHeading = () => {
   // );
   //
 
-  const heading = `${laPlatformSelected?.name || ""} ${
+  const heading = `Jeux ${laPlatformSelected?.name || ""}  ${
     leGenreSelected?.name || ""
-  } Games`;
+  }`;
 
   return (
     <Heading as="h1" marginY={5} fontSize="5xl">
