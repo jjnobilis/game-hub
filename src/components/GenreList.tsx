@@ -6,6 +6,7 @@ import {
   List,
   ListItem,
   Text,
+  useDisclosure,
   // useBoolean,
 } from "@chakra-ui/react";
 import useGenres from "../hooks/useGenres";
@@ -25,6 +26,7 @@ const GenreList = () => {
   // const location = useLocation();
   // const [redir, setRedir] = useBoolean(false);
   const navigate = useNavigate();
+  const { onClose } = useDisclosure();
 
   // if (location.pathname.indexOf("/games/") === 0) setRedir.toggle();
 
@@ -61,6 +63,7 @@ const GenreList = () => {
                 // onClick={() => onSelectGenre(gen)}
                 onClick={() => {
                   onGenreParamSet(gen.id);
+                  onClose();
                   navigate("/");
                 }}
                 fontSize="lg"
