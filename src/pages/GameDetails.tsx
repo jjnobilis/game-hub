@@ -1,11 +1,11 @@
-import { Box, Button, GridItem, Heading, SimpleGrid } from "@chakra-ui/react";
-import { Link, useParams } from "react-router-dom";
+import { GridItem, Heading, SimpleGrid } from "@chakra-ui/react";
+import { useParams } from "react-router-dom";
 import ExpandableText from "../components/ExpandableText";
 import GameAttributesBox from "../components/GameAttributesBox";
 import GameDetailsSkeleton from "../components/GameDetailsSkeleton";
-import useGame from "../hooks/useGame";
-import GameTrailer from "../components/GameTrailer";
 import GameScreenshots from "../components/GameScreenshots";
+import GameTrailer from "../components/GameTrailer";
+import useGame from "../hooks/useGame";
 
 const GameDetails = () => {
   const { slug } = useParams();
