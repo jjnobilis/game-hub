@@ -6,11 +6,13 @@ import {
   List,
   ListItem,
   Text,
+  // useBoolean,
 } from "@chakra-ui/react";
 import useGenres from "../hooks/useGenres";
 import getCroppedImageUrl from "../services/image-url";
 import usGameQueryStore from "../store";
 import GenreSkeleton from "./GenreSkeleton";
+import { useNavigate } from "react-router-dom";
 
 // interface Props {
 //   onSelectGenre: (genre: Genre) => void;
@@ -20,6 +22,12 @@ import GenreSkeleton from "./GenreSkeleton";
 // const GenreList = ({ onSelectGenre, selectedGenreId }: Props) => {
 const GenreList = () => {
   const { data: genres, error, isLoading } = useGenres();
+  // const location = useLocation();
+  // const [redir, setRedir] = useBoolean(false);
+  const navigate = useNavigate();
+
+  // if (location.pathname.indexOf("/games/") === 0) setRedir.toggle();
+
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
   //Utilisation du store
@@ -51,7 +59,10 @@ const GenreList = () => {
               <Button
                 fontWeight={genreIdParam === gen.id ? "bold" : "normal"}
                 // onClick={() => onSelectGenre(gen)}
-                onClick={() => onGenreParamSet(gen.id)}
+                onClick={() => {
+                  onGenreParamSet(gen.id);
+                  navigate("/");
+                }}
                 fontSize="lg"
                 variant="link"
                 textAlign="left"
