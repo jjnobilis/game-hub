@@ -1,4 +1,4 @@
-import { Box, HStack, Image } from "@chakra-ui/react";
+import { Box, HStack, Image, useColorMode } from "@chakra-ui/react";
 import logo from "../assets/midid.webp";
 import ColorModeSwitch from "./ColorModeSwitch";
 import SearchInput from "./SearchInput";
@@ -11,8 +11,14 @@ import GenreListMobileDrawer from "./GenreListMobileDrawyer";
 
 // const NavBar = ({ onSearch }: Props) => {
 const NavBar = () => {
+  const { colorMode } = useColorMode();
   return (
-    <Box>
+    <Box
+      position="sticky"
+      top="0"
+      zIndex="docked"
+      bg={colorMode === "dark" ? "gray.800" : "white"}
+    >
       <HStack padding="10px">
         <Link to="/">
           <Image src={logo} boxSize="60px" objectFit="cover" />
