@@ -32,7 +32,7 @@ const GenreListMobileDrawer = () => {
           <DrawerCloseButton />
           <DrawerBody mt={5} p="4" width="90%">
             <Stack spacing="1">
-              <Box as="button" onClick={onClose}>
+              <Box onClick={onClose}>
                 <GenreList></GenreList>
               </Box>
             </Stack>
